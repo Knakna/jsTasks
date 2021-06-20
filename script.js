@@ -51,13 +51,44 @@ console.log(musiс);
 
 // function
 
-let result;
+// let result;
 
-if (a + b < 4) {
-result = "Мало";
-} else {
-result = "Много";
-}
+// a = 2;
+// b = 3;
+
+// if (a + b < 4) {
+// result = "Мало";
+// } else {
+// result = "Много";
+// }
+// console.log(result);
+
+let result;
+a = 2;
+b = 3;
+
+
+
+result = (a + b < 4) ? 'Мало' : 'Много';
+
+console.log(result);
+
+
+let login = "Директор";
+
+
+let message = (login == 'Сотрудник') ? 'Привет' :
+  (login == 'Директор') ? 'Здравствуйте' :
+  (login == '') ? 'Нет логина' :
+  '';
+
+
+console.log(message);
+
+
+
+
+
 
 
 

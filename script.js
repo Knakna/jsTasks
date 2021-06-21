@@ -67,25 +67,59 @@ let result;
 a = 2;
 b = 3;
 
-
-
 result = (a + b < 4) ? 'Мало' : 'Много';
 
 console.log(result);
 
 
-let login = "Директор";
 
+let login = "Сотрудник";
 
 let message = (login == 'Сотрудник') ? 'Привет' :
   (login == 'Директор') ? 'Здравствуйте' :
   (login == '') ? 'Нет логина' :
   '';
 
-
 console.log(message);
 
 
+
+// function min (a,b) {
+
+
+//   if (a <= b) {
+//     return a;
+//     } else  {
+//     return b;
+//     }
+
+
+
+// }
+
+// console.log(min (2,2));
+// console.log(min (4,3));
+// console.log(min (-8,4));
+
+
+function min (a,b) {
+
+  return a <= b ? a : b;
+
+}
+
+console.log(min (2,2));
+console.log(min (4,3));
+console.log(min (-8,4));
+
+
+function pow (x,n) {
+
+  return Math.pow (x,n)
+
+}
+
+console.log(pow(3,2))
 
 
 

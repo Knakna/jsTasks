@@ -125,6 +125,50 @@ console.log(pow(3,2))
 
 
 
+// WHILE:
+let az = 0;
+while (az <= 5) {
+console.log(az);
+az++;
+}
+
+
+// DO...WHILE:
+let bz = 0;
+do {
+console.log(bz);
+bz++;
+} while (bz <= 5);
+
+
+// FOR:
+for (let cz = 0; cz <= 5; cz++) {
+console.log(cz);
+}
+
+
+
+let numz = 0;
+while (numz <3) {
+console.log(`Число: ${numz}`);
+numz++;
+}
+
+
+firstLoop:
+for (let numzz = 0; numzz <2; numzz++) {
+secondLoop:
+for (let size = 0; size < 3; size++) {
+console.log(size);
+if (size == 1) break firstLoop;
+}
+}
+
+
+
+
+
+
 
 
 

@@ -155,6 +155,8 @@ numz++;
 }
 
 
+sum(2,3);
+
 firstLoop:
 for (let numzz = 0; numzz <2; numzz++) {
 secondLoop:
@@ -164,10 +166,159 @@ if (size == 1) break firstLoop;
 }
 }
 
+sum(2,3);
+
+
+// function sum(aa,bb) {
+// var sum = aa + bb;
+// console.log(`Ваша сумма: ${sum}`);
+// }
+
+// sum(2,3);
+
+
+function sum(aa = 22, bb = 33) {
+  var sum = aa + bb;
+  console.log(`Ваша сумма: ${sum}`);
+  }
+
+  sum();
+
+  sum(4,4);
+
+
+  // Функции-колбэки
+function calcSumm(numOne, numTwo, more, less) {
+	let numSumm = numOne + numTwo;
+
+	if (numSumm > 3) {
+		more();
+	} else {
+		less();
+	}
+}
+
+function showMoreMessage() {
+	console.log('Больше чем 3');
+}
+function showLessMessage() {
+	console.log('Меньше чем 3');
+}
+calcSumm(1, 1, showMoreMessage, showLessMessage);
 
 
 
 
+// Возврат результата
+function calcSumm(numOne, numTwo) {
+
+	let numSumm = numOne + numTwo;
+
+	// Возврат
+	return numSumm;
+
+	// Дальше код не выполняется
+
+}
+let funcRezult = calcSumm(1, 2);
+
+console.log(`Сумма: ${funcRezult}`);
+
+
+// function getSumm() {
+// 	let numOne, numTwo;
+
+// 	function getNumOne() {
+// 		numOne = 1;
+// 	}
+// 	function getNumTwo() {
+// 		numTwo = 2;
+// 	}
+// 	getNumOne();
+// 	getNumTwo();
+
+// 	let numSumm = numOne + numTwo;
+// 	console.log(numSumm);
+// }
+// // getNumOne(); - yбудет не видна вне родительской
+// getSumm();
+
+
+function getSumm() {
+	let summ = 1 + 5;
+	console.log(summ);
+};
+
+let someVar = getSumm;
+
+someVar();
+getSumm();
+// можем вызывать с помощью функции и переменной с круглыми скобками
+
+
+
+
+'use strict'
+if (2 > 1) {
+	function getSumm() {
+		let summ = 1 + 2;
+		console.log(summ);
+	};
+}
+getSumm();
+
+// let getSumm;
+
+// if (2 > 1) {
+// 	getSumm = function () {
+// 		let summ = 1 + 2;
+// 		console.log(summ);
+// 	};
+// }
+// getSumm();
+
+
+function showMessage(text, name) {
+	console.log(`${text}, ${name}!`);
+	// setTimeout(showMessage, 500, text, name);
+}
+// setInterval(showMessage, 500, 'Привет', 'Вася');
+setTimeout(showMessage, 500, 'Привет', 'Вася');
+
+
+
+function showName() {
+	console.log('Василий!');
+}
+setTimeout(showName, 0);
+console.log('Николай!');
+
+let  showText ;
+if(2>1){
+    showText = function () {console.log("сообщение")
+    }
+}
+showText()
+
+
+let numOne = Math.round((1.005 + Number.EPSILON) * 100) / 100;
+console.log(numOne)
+
+let value = '135.58px'
+console.log(parseFloat(value))
+
+let value1 = 58 + 'Фрилансер';
+if (value1 !== NaN) {
+  console.log('Результат выражения NaN')
+}
+
+console.log(Math.max(10, 58, 39, -150, 0))
+
+
+
+
+let num = 58.858;
+console.log(Math.floor(num))
 
 
 

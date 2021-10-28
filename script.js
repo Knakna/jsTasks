@@ -278,20 +278,20 @@ getSumm();
 // getSumm();
 
 
-function showMessage(text, name) {
-	console.log(`${text}, ${name}!`);
-	// setTimeout(showMessage, 500, text, name);
-}
-// setInterval(showMessage, 500, 'Привет', 'Вася');
-setTimeout(showMessage, 500, 'Привет', 'Вася');
+// function showMessage(text, name) {
+// 	console.log(`${text}, ${name}!`);
+// 	// setTimeout(showMessage, 500, text, name);
+// }
+// // setInterval(showMessage, 500, 'Привет', 'Вася');
+// setTimeout(showMessage, 500, 'Привет', 'Вася');
 
 
 
-function showName() {
-	console.log('Василий!');
-}
-setTimeout(showName, 0);
-console.log('Николай!');
+// function showName() {
+// 	console.log('Василий!');
+// }
+// setTimeout(showName, 0);
+// console.log('Николай!');
 
 let  showText ;
 if(2>1){
@@ -651,3 +651,570 @@ let arr17 = [9, 2, 8,];
 let reduceValue = arr17.reduce(function (previousValue, item, index, array) {
 	console.log(previousValue);
 });
+
+
+
+
+
+// WINDOW
+const windowWidth = window.innerWidth;
+console.log(`Ширина окна браузера: ${windowWidth}px`);
+
+
+
+console.log(navigator.userAgent);
+
+if (navigator.userAgent.includes("Chrome")) {
+	console.log('Браузер Хром');
+} else if (navigator.userAgent.includes("Firefox")) {
+	console.log('Браузер Firefox');
+}
+
+
+
+console.log(navigator.platform);
+
+
+//Получаем URL
+console.log(location.href);
+//Меняем URL
+// location.href = "https://google.by";
+
+
+
+//Alert
+// alert("Привет!");
+
+//Сonfirm
+// const confirmResult = confirm("Хочешь научиться верстать?");
+// console.log(confirmResult);
+
+//Prompt
+// const promptResult = prompt("Кто ты по жизни?");
+// console.log(promptResult);
+
+
+/*
+Самые верхние элементы дерева
+доступны как свойства объекта document
+*/
+
+const htmlElement = document.documentElement;
+const headElement = document.head;
+const bodyElement = document.body;
+console.log(htmlElement);
+console.log(headElement);
+console.log(bodyElement);
+
+
+// / Получаем объект body
+// const bodyElement = document.body;
+
+// Первый и последний дочерние элементы
+const firstChildNode = bodyElement.firstChild;
+const lastChildNode = bodyElement.lastChild;
+
+console.log(firstChildNode);
+console.log(lastChildNode);
+
+/*
+В документе, возможено, есть ещё «какой-то HTML-код»,
+но на момент выполнения скрипта браузер ещё
+до него не дошёл.
+Поэтому следует размещать скрипт в самом конце
+документа
+*/
+
+
+
+//Коллекция childNodes содержит список всех детей,
+//включая текстовые узлы.
+const childNodes = bodyElement.childNodes;
+console.log(childNodes);
+
+//Для проверки наличия дочерних узлов
+//существует также специальная функция hasChildNodes()
+console.log(bodyElement.hasChildNodes());
+
+
+
+
+/*
+Как мы уже видели,
+childNodes похож на массив. На самом деле это не массив,
+а коллекция – особый перебираемый объект - псевдомассив.
+
+Отличия от массивов:
+1.Для перебора коллекции мы можем использовать for..of:
+2.Методы массивов не будут работать, потому что
+коллекция – это не массив
+*/
+
+// /Перебор коллекции
+for (let node of childNodes) {
+	console.log(node); // покажет все узлы из коллекции
+}
+
+
+
+// "Живые" коллекции
+/*
+Почти все DOM-коллекции, за небольшим исключением, "живые".
+Другими словами, они отражают текущее состояние DOM.
+Если мы сохраним ссылку на body.childNodes и добавим/удалим
+узлы в DOM, то они появятся в сохранённой коллекции автоматически.
+
+*/
+
+/*
+DOM-коллекции, и даже более – все навигационные свойства,
+перечисленные далее, доступны только для чтения.
+Мы не можем заменить один дочерний узел на другой,
+просто написав childNodes[i] = ....
+Для изменения DOM требуются другие методы.
+*/
+
+// Соседние и родительский узлы
+const previousSiblingNode = bodyElement.previousSibling;
+const nextSiblingNode = bodyElement.nextSibling;
+const parentNode = bodyElement.parentNode;
+
+console.log(previousSiblingNode);
+console.log(nextSiblingNode);
+console.log(parentNode);
+
+/*
+Навигационные свойства, описанные выше, относятся
+ко всем узлам в документе.
+В частности, в childNodes находятся и текстовые узлы и
+узлы-элементы и узлы-комментарии, если они есть.
+*/
+
+// Получаем коллекцию всех дочерних узлов
+const childNodes1 = bodyElement.childNodes;
+console.log(childNodes1);
+
+
+
+
+
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+/*
+Но для большинства задач текстовые узлы и
+узлы-комментарии нам не нужны. Мы хотим манипулировать
+узлами-элементами, которые представляют собой теги и
+формируют структуру страницы.
+*/
+
+// Получаем коллекцию всех дочерних элементов
+
+const bodyСhildren = bodyElement.children;
+console.log(bodyСhildren);
+
+
+// Первый и последний дочерние элементы
+const firstChild = bodyElement.firstElementChild;
+const lastChild = bodyElement.lastElementChild;
+console.log(firstChild);
+console.log(lastChild);
+
+// Соседние и родительский элементы
+const previousSibling = bodyElement.previousElementSibling;
+const nextSibling = bodyElement.nextElementSibling;
+const parentElement = bodyElement.parentElement;
+
+console.log(previousSibling);
+console.log(nextSibling);
+console.log(parentElement);
+
+
+
+
+
+// / Поиск произвольного элемента
+
+// querySelectorAll - статичная коллекция
+
+// // Поиск по селектору класса
+// const elemsOne = document.querySelectorAll('.lesson__list');
+// console.log(elemsOne);
+
+// // Поиск по селектору тега
+// const elemsTwo = document.querySelectorAll('li');
+// console.log(elemsTwo);
+
+// // Поиск по смешанному селектору тега и класса
+// const elemsThree =
+// 	document.querySelectorAll('li.lesson__item-list');
+// console.log(elemsThree);
+
+// // Поиск по тегу первого уровня вложенности
+// const elemsFour =
+// 	document.querySelectorAll('.lesson__list>li');
+// console.log(elemsFour);
+
+// // Поиск по нескольким классам
+// const elemsFive =
+// 	document.querySelectorAll('.lesson__list, .lesson__text');
+// console.log(elemsFive);
+
+// // Поиск по вложенным классам
+// const elemsSix =
+// 	document.querySelectorAll('.lesson__list .lesson__text');
+// console.log(elemsSix);
+
+// // Поиск по ID
+// const elemsSeven =
+// 	document.querySelectorAll('#listItem');
+// console.log(elemsSeven);
+
+// // Поиск по атрибуту
+// const elemsEight =
+// 	document.querySelectorAll('[data-item]');
+// console.log(elemsEight);
+
+// // Поиск по атрибуту со значением
+// const elemsNine =
+// 	document.querySelectorAll('[data-item="85"]');
+// console.log(elemsNine);
+
+
+// / Получение конкретного элемента коллекции
+//const elems = document.querySelectorAll('li');
+//console.log(elems[2]);
+
+/*
+for (const item of elems) {
+	console.log(item);
+}
+*/
+/*
+elems.forEach(item => {
+	console.log(item);
+});
+*/
+
+
+//elem.querySelector(CSS);
+/*
+Возвращает первый элемент внутри elem, соответствующий
+данному CSS-селектору.
+*/
+/*
+//const lessonList = document.querySelectorAll('.lesson__list')[0];
+const lessonList = document.querySelector('.lesson__list');
+console.log(lessonList);
+*/
+
+
+
+//document.getElementById(ID)
+/*
+Если у элемента есть атрибут id,
+то мы можем получить его вызовом document.getElementById(id),
+где бы он ни находился.
+*/
+/*
+const elem = document.getElementById('listItem');
+console.log(elem);
+*/
+/*
+1. id - уникален
+2. Поиск полько внутри document.
+*/
+
+//-------
+
+/*
+elem.getElementsByTagName(tag)
+ищет элементы с данным тегом и возвращает их
+коллекцию.Передав "*" вместо тега, можно получить всех потомков.
+*/
+/*
+const elems = document.getElementsByTagName('li');
+console.log(elems);
+*/
+//-------
+
+/*
+elem.getElementsByClassName(className)
+возвращает элементы, которые имеют данный CSS - класс.
+*/
+/*
+const elems = document.getElementsByClassName('lesson__item-list');
+console.log(elems);
+*/
+//-------
+
+//document.getElementById(ID) и elem.getElementsBy*
+/*
+На данный момент, они используются редко,
+так как querySelectorAll может их заменить.
+Но отличия все же есть!
+*/
+
+//getElementsBy*
+// ВНИМАНИЕ - getElementsBy.. а не getElementBy..
+
+/*
+document.getElementsByName(name) возвращает элементы с
+заданным атрибутом name.Очень редко используется.
+Поиск полько внутри document.
+*/
+
+const elems = document.getElementsByName('list');
+console.log(elems);
+
+
+
+
+// /---------------------!!!!!!!!!!!!!!!!!!!!1!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Живая статическа коллекции
+
+// Получаем статическую коллекцию
+const listStatic = document.querySelectorAll('.list');
+
+// Получаем "живую" коллекцию
+const listLive = document.getElementsByClassName('list');
+
+console.log(listStatic);
+console.log(listLive);
+
+
+
+// Создаем новый HTML-объект.
+const lessonList = document.querySelector('.list');
+lessonList.insertAdjacentHTML(
+	"beforeend",
+	'<li class="list">Новый пункт</li>'
+);
+
+// после этого статическая и живая коллекция будет разная
+
+
+
+
+
+
+
+
+
+
+
+
+//closest
+/*
+Метод elem.closest(css) ищет ближайшего предка,
+который соответствует CSS - селектору.Сам элемент
+также включается в поиск.
+
+Предки элемента это родитель, родитель родителя,
+его родитель и так далее.Вместе они образуют цепочку
+иерархии от элемента до вершины.
+
+Другими словами, метод closest поднимается вверх от
+элемента и проверяет каждого из родителей.Если он
+соответствует селектору, поиск прекращается. Метод возвращает
+либо предка, либо null, если такой элемент не найден.
+
+Напомню свойство parentElement возвращает только
+непосредственного родителя элемента
+*/
+
+const elem = document.querySelector('.list');
+const parentList = elem.closest('.lesson__text');
+console.log(parentList);
+
+/*
+Очень полезный метод, часто используется для проверки
+на существование того или иного родителя, либо для изменения
+родителя конкретного элемента
+*/
+
+// Проверка matches
+/*
+ничего не ищет, а проверяет, удовлетворяет ли
+элемент CSS-селектору, и возвращает true или false.
+*/
+
+const elems3 = document.querySelectorAll('.list');
+for (let elem of elems3) {
+	if (elem.matches('[class$="list--red"]')) {
+		console.log('Крассный');
+	} else if (elem.matches('[class$="list"]')) {
+		console.log('Синий');
+	}
+}
+
+
+
+
+
+const text66 = document.querySelector('.lesson');
+const list = text66.nextElementSibling;
+console.log(list);
+
+
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// =================================================================
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Изменение документа
+
+
+// Cодержимое элемента innerHTML
+
+// Получаем объект
+const textElement = document.querySelector('.lesson__text');
+
+// Получаем содержимое объекта "как есть" вместе с HTML
+const textElementContent = textElement.innerHTML;
+console.log(textElementContent);
+
+// Перезаписываем содержимое объекта
+textElement.innerHTML = `Живи, а работай в свободное время!`;
+
+// Дописываем содержимое объекта
+textElement.innerHTML =
+	`<p>${textElementContent}</p> <p>Живи, а работай в
+	<span class="list">свободное</span> время!</p>`;
+
+console.log(textElement.innerHTML);
+
+
+
+
+// / Cодержимое элемента целиком outerHTML
+
+// Получаем объект
+const textElement1 = document.querySelector('.lesson__text');
+
+// Получаем содержимое объекта "как есть"
+// вместе с HTML, а также сам элемент
+// const textElementContent1 = textElement1.outerHTML;
+// console.log(textElementContent1);
+
+
+// textElement1.outerHTML = `<p>Живи, а работай в
+// 	<span class="yellow">свободное</span> время!</p>`;
+
+// console.log(textElement1.outerHTML);
+
+
+
+
+
+
+// / Просто текст элемента textContent
+
+// Получаем объект
+const textElement3 = document.querySelector('.lesson__text');
+const textElementContent3 = textElement3.textContent;
+console.log(textElementContent3);
+
+/*
+Полезная возможность textContent - записывать
+текст «безопасным способом».
+*/
+/*
+textElement.textContent = `<p>Живи, а работай в
+	<span class="yellow">свободное</span> время!</p>`;
+
+console.log(textElement.textContent);
+*/
+/*
+Мы не хотим, чтобы на сайте появлялся произвольный HTML-код.
+Присваивание через textContent – один из способов от
+этого защититься.
+*/
+
+
+
+// data.
+// Cодержимое текстового узла/комментария
+
+// Получаем объект
+const textElement4 = document.querySelector('.lesson__text');
+const getComment4 = textElement4.nextSibling;
+
+console.log(getComment4);
+console.log(getComment4.data);
+
+
+// Изменение текстового узла/комментария
+getComment4.data = 'Привет';
+console.log(getComment4.data);
+
+
+
+
+// / Создание элементов и узлов.
+
+// Создание нового элемента (тега)
+const newElement = document.createElement('div');
+
+// Наполняем новый элемент
+newElement.innerHTML = `Живи, а работай в
+	<span class="yellow">свободное</span> время!`;
+console.log(newElement);
+
+// Создание нового текстового узла
+const newText = document.createTextNode('Привет!');
+console.log(newText);
+
+/*
+Созданные объекты находятся в константах,
+но не являются частью документа
+*/
+
+
+
+
+// / Методы вставки
+
+
+// Получаем объект
+const textElement5 = document.querySelector('.lesson__text');
+
+// Создание нового элемента (тега)
+const newElement1 = document.createElement('div');
+// Наполняем новый элемент
+newElement1.innerHTML = `Живи, а работай в
+	<span class="yellow">свободное</span> время!`;
+
+
+// Вставляем новый элемент...
+
+//...перед объектом
+textElement.before(newElement);
+//...после объекта
+textElement.after(newElement);
+//...внутрь и в начало объекта
+textElement.prepend(newElement);
+//...внутрь и в конец объекта
+textElement.append(newElement);
+
+// Вставка нескольких фрагментов сразу
+textElement.append(newElement, "Привет!");
+
+/*
+// Можно вставлять строку
+textElement.append(`Живи, а работай в
+	<span class="yellow">свободное</span> время!`);
+*/
+/*
+Другими словами, строки вставляются безопасным способом,
+как делает это textContent. Поэтому эти методы могут
+использоваться только для вставки DOM-узлов или
+текстовых фрагментов. А что, если мы хотим вставить
+HTML именно "как HTML", со всеми тегами и прочим,
+как это делает innerHTML?
+*/

@@ -6,8 +6,8 @@ admin = name;
 console.log(admin);
 
 let house = {
-    city: "Минск",
-    address: "ул.Короля,7"
+	city: "Минск",
+	address: "ул.Короля,7"
 }
 
 console.log(house.city);
@@ -38,11 +38,11 @@ musiс.push("Рок-н-ролл");
 
 console.log(musiс);
 
-console.log( musiс.length );
+console.log(musiс.length);
 
 musiс[Math.floor((musiс.length - 1) / 2)] = "Классика";
 
-console.log( musiс.pop() );
+console.log(musiс.pop());
 
 musiс.unshift("Рэп", "Регги");
 
@@ -76,9 +76,9 @@ console.log(result);
 let login = "Сотрудник";
 
 let message = (login == 'Сотрудник') ? 'Привет' :
-  (login == 'Директор') ? 'Здравствуйте' :
-  (login == '') ? 'Нет логина' :
-  '';
+	(login == 'Директор') ? 'Здравствуйте' :
+		(login == '') ? 'Нет логина' :
+			'';
 
 console.log(message);
 
@@ -102,24 +102,24 @@ console.log(message);
 // console.log(min (-8,4));
 
 
-function min (a,b) {
+function min(a, b) {
 
-  return a <= b ? a : b;
-
-}
-
-console.log(min (2,2));
-console.log(min (4,3));
-console.log(min (-8,4));
-
-
-function pow (x,n) {
-
-  return Math.pow (x,n)
+	return a <= b ? a : b;
 
 }
 
-console.log(pow(3,2))
+console.log(min(2, 2));
+console.log(min(4, 3));
+console.log(min(-8, 4));
+
+
+function pow(x, n) {
+
+	return Math.pow(x, n)
+
+}
+
+console.log(pow(3, 2))
 
 
 
@@ -128,45 +128,45 @@ console.log(pow(3,2))
 // WHILE:
 let az = 0;
 while (az <= 5) {
-console.log(az);
-az++;
+	console.log(az);
+	az++;
 }
 
 
 // DO...WHILE:
 let bz = 0;
 do {
-console.log(bz);
-bz++;
+	console.log(bz);
+	bz++;
 } while (bz <= 5);
 
 
 // FOR:
 for (let cz = 0; cz <= 5; cz++) {
-console.log(cz);
+	console.log(cz);
 }
 
 
 
 let numz = 0;
-while (numz <3) {
-console.log(`Число: ${numz}`);
-numz++;
+while (numz < 3) {
+	console.log(`Число: ${numz}`);
+	numz++;
 }
 
 
-sum(2,3);
+sum(2, 3);
 
 firstLoop:
-for (let numzz = 0; numzz <2; numzz++) {
-secondLoop:
-for (let size = 0; size < 3; size++) {
-console.log(size);
-if (size == 1) break firstLoop;
-}
+for (let numzz = 0; numzz < 2; numzz++) {
+	secondLoop:
+	for (let size = 0; size < 3; size++) {
+		console.log(size);
+		if (size == 1) break firstLoop;
+	}
 }
 
-sum(2,3);
+sum(2, 3);
 
 
 // function sum(aa,bb) {
@@ -178,16 +178,16 @@ sum(2,3);
 
 
 function sum(aa = 22, bb = 33) {
-  var sum = aa + bb;
-  console.log(`Ваша сумма: ${sum}`);
-  }
+	var sum = aa + bb;
+	console.log(`Ваша сумма: ${sum}`);
+}
 
-  sum();
+sum();
 
-  sum(4,4);
+sum(4, 4);
 
 
-  // Функции-колбэки
+// Функции-колбэки
 function calcSumm(numOne, numTwo, more, less) {
 	let numSumm = numOne + numTwo;
 
@@ -293,10 +293,11 @@ getSumm();
 // setTimeout(showName, 0);
 // console.log('Николай!');
 
-let  showText ;
-if(2>1){
-    showText = function () {console.log("сообщение")
-    }
+let showText;
+if (2 > 1) {
+	showText = function () {
+		console.log("сообщение")
+	}
 }
 showText()
 
@@ -309,7 +310,7 @@ console.log(parseFloat(value))
 
 let value1 = 58 + 'Фрилансер';
 if (value1 !== NaN) {
-  console.log('Результат выражения NaN')
+	console.log('Результат выражения NaN')
 }
 
 console.log(Math.max(10, 58, 39, -150, 0))
@@ -1685,18 +1686,18 @@ let scrollWidth = Math.max(
 	document.body.scrollWidth, document.documentElement.scrollWidth,
 	document.body.offsetWidth, document.documentElement.offsetWidth,
 	document.body.clientWidth, document.documentElement.clientWidth
-	);
-	let scrollHeight = Math.max(
+);
+let scrollHeight = Math.max(
 	document.body.scrollHeight, document.documentElement.scrollHeight,
 	document.body.offsetHeight, document.documentElement.offsetHeight,
 	document.body.clientHeight, document.documentElement.clientHeight
-	);
-	console.log(scrollWidth);
-	console.log(scrollHeight);
+);
+console.log(scrollWidth);
+console.log(scrollHeight);
 
 
 
-	// Получить кол-во прокрученных пикселей
+// Получить кол-во прокрученных пикселей
 // Только для чтения
 const windowScrollTop = window.pageYOffset;
 const windowScrollLeft = window.pageXOffset;
@@ -1744,3 +1745,265 @@ function setScrollToOptions() {
 
 setScrollTo();
 setScrollToOptions();
+
+
+/*
+Вызов elem.scrollIntoView(top) прокручивает страницу,
+чтобы elem оказался вверху.У него есть один аргумент:
+
+- если top = true(по умолчанию), то страница будет прокручена,
+чтобы elem появился в верхней части окна.
+Верхний край элемента совмещён с верхней частью окна.
+- если top = false, то страница будет прокручена, чтобы elem
+появился внизу.Нижний край элемента будет совмещён с нижним краем окна.
+*/
+
+// function setScrollIntoView(top) {
+// 	const lessonSelected = document.querySelector('.lesson__selected');
+// 	lessonSelected.scrollIntoView(top);
+// }
+
+// function setScrollIntoViewOptions(top) {
+// 	const lessonSelected = document.querySelector('.lesson__selected');
+// 	lessonSelected.scrollIntoView({
+// 		//"start", "center", "end" или "nearest". По умолчанию "center".
+// 		block: "center",
+// 		//"start", "center", "end" или "nearest". По умолчанию "nearest".
+// 		inline: "nearest",
+// 		// "auto" или "smooth". По умолчанию "auto".
+// 		behavior: "smooth"
+// 	});
+// }
+// Опции не работают в Safari
+
+// Запретить прокрутку
+// function setEnableDisableScroll() {
+// 	//document.body.style.overflow = "hidden";
+// 	document.body.classList.toggle('scroll-lock');
+// }
+
+/*
+Для прокрутки страницы из JavaScript её DOM должен
+быть полностью построен.
+Например, если мы попытаемся прокрутить страницу
+из скрипта в <head>, это не сработает.
+*/
+
+
+//========================================================================================================================================================
+// Метрики элементов на странице
+
+// Получаем объект
+const block = document.querySelector('.lesson__block');
+
+// Позиция объекта
+// Свойства offsetParent, offsetLeft и offsetTop
+
+// Получаем родительский элемент
+// относительно которого позицианирован наш объект
+const elementOffsetParent = block.offsetParent;
+
+
+/*
+Это будет ближайший предок, который
+удовлетворяет следующим условиям:
+
+1. Является CSS-позиционированным
+	(CSS-свойство position равно absolute, relative, fixed или sticky)
+2. или теги <td>, <th>, <table>,
+3. или <body>.
+*/
+
+console.log(elementOffsetParent);
+
+/*
+Cитуации, в которых offsetParent равно null:
+1. Для скрытых элементов
+	(с CSS - свойством display: none или когда его нет в документе).
+2. Для элементов <body> и <html>.
+3. Для элементов с position: fixed.
+*/
+
+
+
+// Получаем позицию объекта относительно предка (offsetParent)
+const elementOffsetLeft = block.offsetLeft;
+const elementOffsetTop = block.offsetTop;
+
+console.log(elementOffsetLeft);
+console.log(elementOffsetTop);
+
+//========================================================================================================================================================
+
+// Общие размеры объекта
+// offsetWidth и offsetHeight
+
+// Получаем размеры объекта
+const elementOffsetWidth = block.offsetWidth;
+const elementOffsetHeight = block.offsetHeight;
+
+console.log(elementOffsetWidth);
+console.log(elementOffsetHeight);
+
+// Метрики для не показываемых элементов равны нулю.
+
+//========================================================================================================================================================
+
+// Отступы внутренней части элемента от внешней.
+// clientTop и clientLeft
+
+const elementClientTop = block.clientTop;
+const elementClientLeft = block.clientLeft;
+
+console.log(elementClientTop);
+console.log(elementClientLeft);
+
+
+
+// Размеры объекта без
+// рамок и полосы прокрутки
+// clientWidth и clientHeight
+
+const elementClientWidth = block.clientWidth;
+const elementClientHeight = block.clientHeight;
+
+console.log(elementClientWidth);
+console.log(elementClientHeight);
+
+// общая ширина (offsetWidth) - рамка слева - рамка справа - скролл
+
+
+// Размеры объекта включающие в себя
+// прокрученную (которую не видно) часть.
+// В остальном работают как clientWidth/clientHeight,
+// scrollWidth и scrollHeight
+
+const elementScrollWidth = block.scrollWidth;
+const elementScrollHeight = block.scrollHeight;
+
+console.log(elementScrollWidth);
+console.log(elementScrollHeight);
+
+
+// Размеры прокрученной области
+// scrollLeft и scrollTop
+
+block.scrollTop = 150;
+
+const elementScrollLeft = block.scrollLeft;
+const elementScrollTop = block.scrollTop;
+
+console.log(elementScrollLeft);
+console.log(elementScrollTop);
+
+
+// / Методы управления прокруткой
+// scrollBy, scrollTo и scrollIntoView
+// работают и для объекта
+
+// function setElementScrollBy() {
+// 	block.scrollBy({
+// 		top: 20,
+// 		left: 0,
+// 		behavior: "smooth"
+// 	})
+// }
+
+
+
+
+// /========================================================================================================================================================
+
+
+// Координаты
+/*
+Большинство соответствующих методов JavaScript работают в
+одной из двух указанных ниже систем координат:
+
+1. Относительно окна браузера.
+	(как position: fixed, отсчёт идёт от верхнего левого угла окна.)
+	Принято обозначать clientX/clientY.
+2. Относительно документа.
+	(как position: absolute относительно <body>, отсчёт идёт от
+	верхнего левого угла документа.)
+	Принято обозначать pageX/pageY.
+
+Когда страница полностью прокручена в самое начало,
+то верхний левый угол окна совпадает с левым верхним
+углом документа, при этом обе этих системы координат тоже совпадают.
+Но если происходит прокрутка, то координаты элементов в
+контексте окна меняются, так как они двигаются,
+но в то же время их координаты относительно
+документа остаются такими же.
+
+*/
+
+//========================================================================================================================================================
+
+// Координаты относительно окна браузера
+// getBoundingClientRect
+
+// Получаем объект
+const item = document.querySelector('.lesson__item');
+
+// Получаем координаты относительно окна браузера
+const getItemCoords = item.getBoundingClientRect();
+
+console.log(getItemCoords);
+
+// Получаем конкретную координату относительно окна браузера
+const getItemLeftCoord = item.getBoundingClientRect().left;
+
+console.log(getItemLeftCoord);
+
+
+// Координаты относительно документа
+// getBoundingClientRect
+
+// Получаем объект
+const item1 = document.querySelector('.lesson__item');
+
+// Получаем конкретную координату относительно окна браузера
+const getItemTopCoord = item1.getBoundingClientRect().top;
+
+// Получаем конкретную координату относительно документа
+const getItemTopDocumentCoord = getItemTopCoord + window.pageYOffset;
+
+console.log(getItemTopCoord);
+console.log(getItemTopDocumentCoord);
+
+
+
+// Получение объекта по координатам
+// document.elementFromPoint(x, y);
+
+const elem9 = document.elementFromPoint(100, 100);
+console.log(elem9);
+
+
+// Задача №1  Узнать ширину полосы прокрутки
+let WindowWidth = window.innerWidth;
+let DocumentWidth = document.documentElement.clientWidth;
+console.log(WindowWidth - DocumentWidth);
+
+
+// Задача №2 Заставьте браузер прокрутиться на 100px сверху
+// спустя секунду после открытия страницы
+setTimeout(function () { window.scrollBy(0, 100) }, 1000);
+
+
+// Задача №3.
+// Получите координаты любых трех элементов на странице
+
+
+
+const elemq = document.elementFromPoint(400, 600);
+console.log(elemq);
+
+
+const elemw = document.elementFromPoint(300, 500);
+console.log(elemw);
+
+
+const eleme = document.elementFromPoint(600, 400);
+console.log(eleme);

@@ -47,3 +47,22 @@ body {
   background-color: blue;
 }
 
+
+
+
+.blockq {
+	padding: 15px;
+	width: 350px;
+	background-color: #794f45;
+}
+.block__innerq {
+	padding: 15px;
+	margin: 15px;
+	background-color: #77608d;
+}
+.block__inner-innerq {
+	margin: 15px;
+	background-color: #7a956b;
+	padding: 15px;
+}
+

@@ -2007,3 +2007,242 @@ console.log(elemw);
 
 const eleme = document.elementFromPoint(600, 400);
 console.log(eleme);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//========================================================================================================================================================
+//========================================================================================================================================================
+
+
+// Введение в JS события
+
+/*
+Отлавливать возникновение события  будем с помощью
+специальных обработчиков.
+
+Любому событию можно назначить обработчик, то есть функцию,
+которая сработает, как только произойдет нужное нам событие.
+Именно благодаря этим обработчикам JavaScript может
+реагировать на действия пользователя.
+
+Есть несколько способов назначить событию обработчик.
+
+*/
+
+// -----------------------------
+
+
+// Использование атрибута HTML
+
+// -----------------------------
+
+// Использование DOM-объекта
+const button2 = document.querySelector('.button2');
+
+
+button2.onclick = function () {
+	console.log('Клюк!');
+}
+
+const button3 = document.querySelector('.button3');
+
+
+function showConsole() {
+	console.log('Клык!');
+}
+button3.onclick = showConsole;
+
+// Важно! Без круглых скобок!
+
+
+// -----------------------------
+
+/*
+Фундаментальный недостаток описанных выше способов
+назначения обработчика – невозможность повесить несколько
+обработчиков на одно событие.
+Каждое новое назначение обработчика перезапишет предыдущее:
+*/
+
+const button = document.querySelector('.button');
+
+button.onclick = function () {
+	console.log('Клук!');
+}
+button.onclick = function () {
+	console.log('Клак!');
+}
+
+
+//===================================================
+
+
+
+//===================================================
+
+// Обработчик событий addEventListener/removeEventListener
+
+/*
+Существует основной способ назначения
+обработчиков при помощи специальных
+методов addEventListener и removeEventListener,
+которые лишены этого недостатка
+
+element.addEventListener(event, handler[, options]);
+*/
+
+// const button = document.querySelector('.button');
+// уже была определена ранее
+
+button.addEventListener("click", function (e) {
+	console.log('Клйк!');
+});
+button.addEventListener("click", function (e) {
+	console.log('Клцк!');
+});
+
+// ------
+
+// const button = document.querySelector('.button');
+
+function showConsole() {
+	console.log('Клек!');
+	button.removeEventListener("click", showConsole);
+}
+
+button.addEventListener("click", showConsole);
+//button.removeEventListener("click", showConsole);
+
+
+
+
+
+
+
+// Опции
+
+const options = {
+	"capture": false, // фаза, на которой должен сработать обработчик
+	"once": true, // если true, тогда обработчик будет
+	//автоматически удалён после выполнения.
+	"passive": false // если true, то указывает, что обработчик
+	//никогда не вызовет preventDefault()
+}
+
+// const button = document.querySelector('.button');
+
+function showConsole() {
+	console.log('Клкк!');
+}
+
+button.addEventListener("click", showConsole, options);
+
+/*
+Метод addEventListener может показаться сложнее чем, скажем, onclick.
+Но, из-за того что он обладает преимуществом
+"прослушивания" нескольких событий,
+а также учитывая тот факт что существуют события которые можно отловить
+только при помощи этого метода.
+В результате разработчики чаще используют именно его.
+*/
+
+
+
+
+
+// ------
+
+// Объект события
+/*
+Чтобы хорошо обработать событие, могут понадобиться детали того,
+что произошло.Не просто «клик» или «нажатие клавиши»,
+а также – какие координаты указателя мыши, какая клавиша
+нажата и так далее.
+Когда происходит событие, браузер создаёт объект события,
+записывает в него детали и передаёт его в качестве
+аргумента функции - обработчику.
+*/
+
+// const button = document.querySelector('.button');
+
+
+
+
+
+function showConsole(event) {
+	// Тип события
+	console.log(event.type);
+	// Объект на котором сработал обработчик
+	console.log(event.target);
+	// Объект к которому назначен обработчик
+	console.log(event.currentTarget);
+	// Положение курсора по оси X
+	console.log(event.clientX);
+	// Положение курсора по оси Y
+	console.log(event.clientY);
+
+	// Все детали события
+	console.log(event);
+}
+
+button.addEventListener("click", showConsole);
+button.addEventListener("mouseenter", showConsole);
+
+
+//===================================================
+
+
+
+
+
+//===================================================
+
+
+// Всплытие и погружение
+
+const blockq = document.querySelector('.blockq');
+const blockInnerq = document.querySelector('.block__innerq');
+const blockInnerInnerq = document.querySelector('.block__inner-innerq');
+
+/*
+Всплытие
+Когда на элементе происходит событие, обработчики
+сначала срабатывают на нём, потом на его родителе,
+затем выше и так далее, вверх по цепочке предков.
+*/
+/*
+Погружение
+Для того чтобы что-то всплыло, оно должно сначало погрузиться :)
+*/
+// происходит всплытие
+
+blockq.addEventListener("click", function (event) {
+	console.log('Клик на Блок!');
+	//console.log(event.target);
+});
+blockInnerq.addEventListener("click", function (event) {
+	console.log('Клик на Блок второго уровня!');
+}, { "capture": true });
+blockInnerInnerq.addEventListener("click", function (event) {
+	console.log('Клик на Блок третьего уровня!');
+	// Остановка всплытия
+	// event.stopPropagation();
+});
+
+/*
+В современной разработке стадия погружения используется очень редко,
+обычно события обрабатываются во время всплытия.
+*/
+
+//===================================================

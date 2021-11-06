@@ -2246,3 +2246,198 @@ blockInnerInnerq.addEventListener("click", function (event) {
 */
 
 //===================================================
+
+
+// Делегирование событий
+
+/*
+Всплытие и перехват событий позволяет реализовать
+один из самых важных приёмов разработки – делегирование.
+*/
+
+const buttons = document.querySelectorAll('.buttons');
+
+// function showConsole() {
+// 	console.log('Ура!');
+// }
+// buttons.forEach(buttonItem => {
+// 	buttonItem.addEventListener("click", showConsole);
+// });
+
+
+// -----------------
+
+
+const lesson = document.querySelector('.lesson');
+
+function showConsole() {
+	console.log('Ура!');
+}
+lesson.addEventListener("click", function (event) {
+	if (event.target.closest('.buttons')) {
+		showConsole();
+	}
+});
+
+
+
+// Пример с меню
+
+const menuBody = document.querySelector('.menu');
+
+document.addEventListener("click", menu);
+
+function menu(event) {
+	if (event.target.closest('.menu__button')) {
+		menuBody.classList.toggle('_active');
+	}
+	if (!event.target.closest('.menu')) {
+		menuBody.classList.remove('_active');
+	}
+}
+
+
+
+
+
+
+// Действия браузера по умолчанию
+
+/*
+Многие события автоматически влекут за собой действие браузера.
+Например:
+- Клик по ссылке инициирует переход на новый URL.
+- Нажатие на кнопку «отправить» в форме – отсылку её на сервер.
+- Зажатие кнопки мыши над текстом и её движение
+	в таком состоянии – инициирует его выделение и т.д.
+
+Если мы обрабатываем событие в JavaScript,
+то зачастую такое действие браузера нам не нужно.
+К счастью, его можно отменить.
+*/
+
+const link9 = document.querySelector('.link9');
+
+
+link9.addEventListener("click", function (event) {
+	console.log('Наши действия');
+	// отменить действие браузера (переход по ссылке)
+	event.preventDefault();
+});
+
+/*
+link.onclick = function () {
+	console.log('Наши действия');
+	// отменить действие браузера (переход по ссылке)
+	return false;
+}
+*/
+
+//===================================================
+
+
+
+
+/*
+Необязательная опция passive: true для addEventListener
+сигнализирует браузеру, что обработчик не собирается выполнять
+preventDefault(). Почему это может быть полезно ?
+Есть некоторые события, как touchmove на мобильных
+устройствах(когда пользователь перемещает палец по экрану),
+которое по умолчанию начинает прокрутку, но мы можем отменить
+это действие, используя preventDefault() в обработчике.
+Поэтому, когда браузер обнаружит такое событие,
+он должен для начала запустить все обработчики и после,
+если preventDefault не вызывается нигде, он может начать прокрутку.
+Это может вызвать ненужные задержки в пользовательском интерфейсе.
+Опция passive: true сообщает браузеру, что обработчик
+не собирается отменять прокрутку.Тогда браузер начинает её немедленно,
+обеспечивая максимально плавный интерфейс, параллельно обрабатывая событие.
+Для некоторых браузеров(Firefox, Chrome) опция passive по умолчанию
+включена в true для таких событий, как touchstart и touchmove.
+*/
+
+const link8 = document.querySelector('.link8');
+
+link8.addEventListener("click", function (event) {
+	console.log('Наши действия');
+	// отменить действие браузера (переход по ссылке)
+	event.preventDefault();
+}, { "passive": true });
+
+//===================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Основы событий мыши
+
+// Типы событий мыши
+/*
+Мы можем разделить события мыши на две категории:
+«простые» и «комплексные».
+*/
+
+// Простые события
+//Самые часто используемые простые события:
+/*
+mousedown / mouseup - Кнопка мыши нажата / отпущена над элементом.
+mouseover / mouseout - Курсор мыши появляется над элементом и уходит с него.
+mousemove - Каждое движение мыши над элементом генерирует это событие.
+contextmenu - Вызывается при попытке открытия контекстного меню,
+					как правило, нажатием правой кнопки мыши.
+					Но, заметим, это не совсем событие мыши,
+					оно может вызываться и специальной клавишей клавиатуры.
+*/
+//Комплексные события
+/*
+click - Вызывается при mousedown, а затем mouseup над одним
+и тем же элементом, если использовалась основная кнопка мыши.
+dblclick - Вызывается двойным кликом на элементе.
+Комплексные события состоят из простых, поэтому
+в теории мы могли бы без них обойтись.
+Но хорошо, что они существуют, потому что работать с ними очень удобно.
+*/
+
+
+
+const btn9 = document.querySelector('.btn9');
+
+btn9.addEventListener("mousedown", function (event) {
+	console.log(`Нажата кнопка ${event.which}`);
+});
+
+btn9.addEventListener("click", function (event) {
+	console.log('Нажата основная кнопка мыши');
+});
+
+btn9.addEventListener("contextmenu", function (event) {
+	console.log('Вызвано контекстное меню (не основная кнопка мыши)');
+});
+
+/*
+event.which = 1 - Нажата основная кнопка мыши (обычно левая)
+event.which = 2 - Нажата средняя кнопка мыши (колесо)
+event.which = 3 - Нажата не основная кнопка мыши (обычно правая)
+*/
+
+// Координаты: clientX/Y, pageX/Y
+
+const blockForMouse = document.querySelector('.block-for-mouse');
+
+blockForMouse.addEventListener("mousemove", function (event) {
+	blockForMouse.innerHTML =
+		`clientX - ${event.clientX} <br> clientY - ${event.clientY}`;
+});
+
+
+//------------------

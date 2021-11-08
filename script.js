@@ -2432,12 +2432,61 @@ event.which = 3 - Нажата не основная кнопка мыши (об
 
 // Координаты: clientX/Y, pageX/Y
 
-const blockForMouse = document.querySelector('.block-for-mouse');
+const blockForMouse1 = document.querySelector('.block-for-mouse1');
 
-blockForMouse.addEventListener("mousemove", function (event) {
-	blockForMouse.innerHTML =
+blockForMouse1.addEventListener("mousemove", function (event) {
+	blockForMouse1.innerHTML =
 		`clientX - ${event.clientX} <br> clientY - ${event.clientY}`;
 });
 
 
 //------------------
+
+const blockForMouse2 = document.querySelector('.block-for-mouse2');
+
+blockForMouse2.addEventListener("mouseover", function (event) {
+	blockForMouse2.innerHTML = `Курсор над элементом`;
+});
+blockForMouse2.addEventListener("mouseout", function (event) {
+	blockForMouse2.innerHTML = `Курсор уходит с элемента`;
+});
+
+
+
+/*
+Эти события являются особенными, потому что у них имеется свойство
+relatedTarget. Оно «дополняет» target. Когда мышь переходит
+с одного элемента на другой, то один из них будет target,
+а другой relatedTarget.
+
+Для события mouseover:
+event.target – это элемент, на который курсор перешёл.
+event.relatedTarget – это элемент,
+с которого курсор ушёл(relatedTarget → target).
+
+Для события mouseout наоборот:
+event.target – это элемент, с которого курсор ушёл.
+event.relatedTarget – это элемент,
+на который курсор перешёл(target → relatedTarget).
+*/
+
+const blockForMouse = document.querySelector('.block-for-mouse');
+
+blockForMouse.addEventListener("mouseover", function (event) {
+	console.log(event.target);
+	console.log(event.relatedTarget);
+});
+blockForMouse.addEventListener("mouseout", function (event) {
+	console.log(event.target);
+	console.log(event.relatedTarget);
+});
+
+
+// const blockForMouse = document.querySelector('.block-for-mouse');
+
+blockForMouse.addEventListener("mouseover", function (event) {
+	console.log(`Курсор над элементом`);
+});
+blockForMouse.addEventListener("mouseout", function (event) {
+	console.log(`Курсор уходит с элемента`);
+});

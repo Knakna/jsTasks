@@ -126,13 +126,43 @@ body {
   padding: 30px;
 }
 
-
 .block-for-mouse {
   padding: 15px;
   font-size: 14px;
   width: 200px;
   height: 200px;
   background-color: #7a956b;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  text-align: center;
+}
+.block-for-mouse1 {
+  padding: 15px;
+  font-size: 14px;
+  width: 200px;
+  height: 200px;
+  background-color: greenyellow;
+
+  text-align: center;
+}
+
+.block-for-mouse2 {
+  padding: 15px;
+  font-size: 14px;
+  width: 200px;
+  height: 200px;
+  background-color: green;
+
+  text-align: center;
+}
+
+.block-for-mouse {
+  padding: 15px;
+  font-size: 14px;
+  width: 200px;
+  height: 200px;
+  background-color: greenyellow;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);

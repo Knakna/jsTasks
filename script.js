@@ -2470,23 +2470,171 @@ event.relatedTarget – это элемент,
 на который курсор перешёл(target → relatedTarget).
 */
 
-const blockForMouse = document.querySelector('.block-for-mouse');
+const blockForMouse3 = document.querySelector('.block-for-mouse3');
 
-blockForMouse.addEventListener("mouseover", function (event) {
+blockForMouse3.addEventListener("mouseover", function (event) {
 	console.log(event.target);
 	console.log(event.relatedTarget);
 });
-blockForMouse.addEventListener("mouseout", function (event) {
+blockForMouse3.addEventListener("mouseout", function (event) {
 	console.log(event.target);
 	console.log(event.relatedTarget);
 });
 
 
-// const blockForMouse = document.querySelector('.block-for-mouse');
 
-blockForMouse.addEventListener("mouseover", function (event) {
+
+// События mouseenter и mouseleave
+/*
+Пара важных отличий:
+1) Переходы внутри элемента, на его потомки и с них, не считаются.
+2) События mouseenter / mouseleave не всплывают.
+*/
+
+const blockForMouse4 = document.querySelector('.block-for-mouse4');
+
+blockForMouse4.addEventListener("mouseover", function (event) {
 	console.log(`Курсор над элементом`);
 });
-blockForMouse.addEventListener("mouseout", function (event) {
+blockForMouse4.addEventListener("mouseout", function (event) {
 	console.log(`Курсор уходит с элемента`);
 });
+
+
+const blockForMouse5 = document.querySelector('.block-for-mouse5');
+
+blockForMouse5.addEventListener("mouseenter", function (event) {
+	console.log(`Курсор над элементом`);
+});
+blockForMouse5.addEventListener("mouseleave", function (event) {
+	console.log(`Курсор уходит с элемента`);
+});
+
+
+
+
+//Делегирование событий наведения мыши
+
+const blockForMouse = document.querySelector('.block-for-mouse');
+blockForMouse.addEventListener("mouseover", function (event) {
+	let target = event.target.closest('span');
+	// переход не на <span> - игнорировать
+	if (!target) return;
+	target.style.cssText = `background-color: #77608d;`;
+});
+blockForMouse.addEventListener("mouseout", function (event) {
+	let target = event.target.closest('span');
+	// переход не на <span> - игнорировать
+	if (!target) return;
+	target.style.cssText = ``;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------
+
+// Перетаскивание Drag`n`Drop
+
+const gragField = document.querySelector('.drag-field');
+const gragItem = document.querySelector('.drag-field__item');
+
+gragItem.addEventListener("mousedown", function (event) {
+
+	let coordsItemX = event.clientX - gragItem.getBoundingClientRect().left;
+	let coordsItemY = event.clientY - gragItem.getBoundingClientRect().top;
+
+	let gragItemSizes = {
+		width: gragItem.offsetWidth,
+		height: gragItem.offsetHeight
+	}
+	let gragFieldSizes = {
+		left: gragField.getBoundingClientRect().left + scrollX,
+		top: gragField.getBoundingClientRect().top + scrollY,
+		right: gragField.getBoundingClientRect().left + scrollX + gragField.offsetWidth,
+		bottom: gragField.getBoundingClientRect().top + scrollY + gragField.offsetHeight
+	}
+
+	gragItem.style.position = 'absolute';
+	gragItem.style.zIndex = 1000;
+	document.body.append(gragItem);
+
+	moveItem(event.pageX, event.pageY);
+
+	function moveItem(pageX, pageY) {
+		let currentX = pageX - coordsItemX;
+		let currentY = pageY - coordsItemY;
+
+		if (
+			currentX + gragItemSizes.width <= gragFieldSizes.right &&
+			currentX >= gragFieldSizes.left
+		) {
+			gragItem.style.left = `${currentX}px`;
+		} else {
+			if (currentX + gragItemSizes.width > gragFieldSizes.right) {
+				gragItem.style.left = `${gragFieldSizes.right - gragItemSizes.width}px`;
+			}
+			if (currentX < gragFieldSizes.left) {
+				gragItem.style.left = `${gragFieldSizes.left}px`;
+			}
+		}
+		if (
+			currentY + gragItemSizes.height <= gragFieldSizes.bottom &&
+			currentY >= gragFieldSizes.top
+		) {
+			gragItem.style.top = `${currentY}px`;
+		} else {
+			if (currentY + gragItemSizes.height > gragFieldSizes.bottom) {
+				gragItem.style.top = `${gragFieldSizes.bottom - gragItemSizes.height}px`;
+			}
+			if (currentY < gragFieldSizes.top) {
+				gragItem.style.top = `${gragFieldSizes.top}px`;
+			}
+		}
+	}
+
+	let currentDroppable = null;
+
+	function onDragItem(event) {
+		moveItem(event.pageX, event.pageY);
+
+		gragItem.hidden = true;
+		let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+		gragItem.hidden = false;
+
+		if (!elemBelow) return;
+		let droppableBelow = elemBelow.closest('.drag-field__point');
+
+		if (currentDroppable !== droppableBelow) {
+			if (currentDroppable) {
+				currentDroppable.classList.remove('_active');
+				gragItem.classList.remove('_active');
+			}
+			currentDroppable = droppableBelow;
+			if (currentDroppable) {
+				currentDroppable.classList.add('_active');
+				gragItem.classList.add('_active');
+			}
+		}
+	}
+	document.addEventListener('mousemove', onDragItem);
+
+	document.addEventListener("mouseup", function (event) {
+		document.removeEventListener('mousemove', onDragItem);
+	}, { "once": true });
+});
+gragItem.addEventListener("dragstart", function (event) {
+	event.preventDefault();
+});
+
+
+
+//===================================================

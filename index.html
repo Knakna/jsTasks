@@ -139,18 +139,18 @@
 
 			<!-- Пример с меню -->
 
-				<nav class="menu">
-					<button type="button" class="menu__button">
-						<span>Открыть меню</span>
-						<span>Закрыть меню</span>
-					</button>
-					<ul hidden class="menu__list">
-						<li><a href="" class="menu__link">Пункт №1</a></li>
-						<li><a href="" class="menu__link">Пункт №2</a></li>
-						<li><a href="" class="menu__link">Пункт №3</a></li>
-						<li><a href="" class="menu__link">Пункт №4</a></li>
-					</ul>
-				</nav>
+			<nav class="menu">
+				<button type="button" class="menu__button">
+					<span>Открыть меню</span>
+					<span>Закрыть меню</span>
+				</button>
+				<ul hidden class="menu__list">
+					<li><a href="" class="menu__link">Пункт №1</a></li>
+					<li><a href="" class="menu__link">Пункт №2</a></li>
+					<li><a href="" class="menu__link">Пункт №3</a></li>
+					<li><a href="" class="menu__link">Пункт №4</a></li>
+				</ul>
+			</nav>
 
 
 
@@ -163,54 +163,88 @@
 
 			<button type="button" class="btn9">push</button>
 
-				<div class="block-for-mouse1">
-					<span>Я дочерний SPAN</span>
-				</div>
+			<div class="block-for-mouse1">
+				<span>Я дочерний SPAN</span>
+			</div>
 
 
 			<!-- Пример делегирования наведения мыши -->
 
 
-				<div class="block-for-mouse2">
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
-					<span>6</span>
-					<span>7</span>
-					<span>8</span>
-					<span>9</span>
-				</div>
+			<div class="block-for-mouse2">
+			</div>
 
-				<div class="block-for-mouse">
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
-					<span>6</span>
-					<span>7</span>
-					<span>8</span>
-					<span>9</span>
-				</div>
+			<div class="block-for-mouse3">
+				Эти события являются особенными, потому что у них имеется свойство
+				relatedTarget. Оно «дополняет» target. Когда мышь переходит
+				с одного элемента на другой, то один из них будет target,
+				а другой relatedTarget.
+				<br> <br>
+				Для события mouseover:
+				event.target – это элемент, на который курсор перешёл.
+				event.relatedTarget – это элемент,
+				с которого курсор ушёл(relatedTarget → target).
+				<br> <br>
+				Для события mouseout наоборот:
+				event.target – это элемент, с которого курсор ушёл.
+				event.relatedTarget – это элемент,
+				на который курсор перешёл(target → relatedTarget).
+			</div>
+
+			<div class="block-for-mouse4">
+				<span class="blo4">Я дочерний SPAN</span>
+			</div>
+
+			<div class="block-for-mouse5">
+				<span class="blo4">Я дочерний SPAN</span>
+			</div>
+
+
+
+			<div class="block-for-mouse">
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+				<span>6</span>
+				<span>7</span>
+				<span>8</span>
+				<span>9</span>
+			</div>
+			<div class="rule">Применять нужно mouseover / mouseout
+				<br>События mouseenter и mouseleave примнять не надо: работать не будет
+			</div>
+			<div class="block-for-mouse0">
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+				<span>6</span>
+				<span>7</span>
+				<span>8</span>
+				<span>9</span>
+
+			</div>
+
 
 
 
 			<!-- Перетаскивание Drag`n`Drop -->
 
-				<div class="drag-field">
-					<div class="drag-field__item"></div>
-					<div class="drag-field__point"></div>
-				</div>
+			<div class="drag-field">
+				<div class="drag-field__item"></div>
+				<div class="drag-field__point"></div>
+			</div>
 
 
 			<!-- Клавиатура -->
 
-				<div class="textarea">
-					<textarea autocomplete="off" maxlength="30" name="form[]" class="textarea__item"></textarea>
-					<div class="textarea__counter">Осталось <span></span> символов</div>
-				</div>
+			<div class="textarea">
+				<textarea autocomplete="off" maxlength="30" name="form[]" class="textarea__item"></textarea>
+				<div class="textarea__counter">Осталось <span></span> символов</div>
+			</div>
 
 
 			<!-- Загрузка страницы -->

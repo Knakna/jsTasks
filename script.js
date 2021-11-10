@@ -2638,3 +2638,216 @@ gragItem.addEventListener("dragstart", function (event) {
 
 
 //===================================================
+
+
+
+//===================================================
+
+// Клавиатура
+
+/*
+Основные события при работе с клавиатурой это:
+	keydown – происходит при нажатии клавиши
+	keyup – при отпускании клавиши
+*/
+
+// event.code (отследить сочетания клавиш)  и event.key (для отслеживания нажатой клавиши)
+
+
+
+/*
+Если пользователь работает с разными языками, то при переключении
+на другой язык символ изменится с "G" на совершенно другой.
+Получившееся станет новым значением event.key,
+тогда как event.code останется тем же: "KeyG".
+*/
+
+document.addEventListener("keydown", function (event) {
+	console.log(`Нажата клавиша ${event.code} (${event.key})`);
+});
+document.addEventListener("keyup", function (event) {
+	console.log(`Отжата клавиша ${event.code} (${event.key})`);
+});
+
+
+/*
+Если пользователь работает с разными языками, то при переключении
+на другой язык символ изменится с "G" на совершенно другой.
+Получившееся станет новым значением event.key,
+тогда как event.code останется тем же: "KeyG".
+*/
+
+
+document.addEventListener('keydown', function (event) {
+	if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+		console.log('Отмена действия!');
+	}
+});
+
+
+
+/*
+Автоповтор
+При долгом нажатии клавиши возникает автоповтор: keydown срабатывает
+снова и снова, и когда клавишу отпускают, то отрабатывает keyup.
+Так что ситуация, когда много keydown и один keyup, абсолютно нормальна.
+Для событий, вызванных автоповтором, у объекта события
+свойство event.repeat равно true.
+*/
+
+document.addEventListener("keydown", function (event) {
+	console.log(`Нажата клавиша ${event.code} (${event.key})`);
+	console.log(event.repeat);
+});
+
+
+
+// Пример
+const txtItem = document.querySelector('.textarea__item');
+const txtItemLimit = txtItem.getAttribute('maxlength');
+const txtCounter = document.querySelector('.textarea__counter span');
+txtCounter.innerHTML = txtItemLimit;
+
+// чтоб счет шел и при повторе
+
+txtItem.addEventListener("keyup", txtSetCounter);
+txtItem.addEventListener("keydown", function (event) {
+	if (event.repeat) txtSetCounter();
+});
+
+
+function txtSetCounter() {
+	const txtCounterResult = txtItemLimit - txtItem.value.length;
+	txtCounter.innerHTML = txtCounterResult;
+}
+
+
+
+
+// закрыть МЕНЮ ПО клавише escape
+
+
+document.addEventListener('keyup', function (event) {
+	if (event.code === 'Escape') {
+		menuBody.classList.remove('_active');
+	}
+});
+
+
+//===================================================
+
+// Прокрутка (скролл)
+
+window.addEventListener('scroll', function (event) {
+	//кол-во прокрученных пикселей по вертикали
+	// scrollY или pageYOffset (устарел)
+	// кол-во прокрученных пикселей по горизонтали
+	// scrollX или pageXOffset (устарел)
+
+	// console.log(`${scrollY}px`);
+	// узнаем кол-во прокрученных пикселей и выводим в консоль
+});
+
+// Предотвращение прокрутки
+/*
+Нельзя предотвратить прокрутку, используя event.preventDefault()
+в обработчике scroll,  потому что он срабатывает после того,
+как прокрутка уже произошла.
+
+Но можно предотвратить прокрутку, используя event.preventDefault()
+на событии, которое вызывает прокрутку, например,
+на событии keydown для клавиш pageUp и pageDown.
+
+Способов инициировать прокрутку много, более надёжный
+способ – использовать CSS, свойство overflow: hidden;.
+*/
+
+
+/*
+Использование
+
+Событие прокрутки scroll позволяет реагировать на прокрутку страницы
+или элемента. Есть много хороших вещей, которые при этом можно сделать.
+
+- Показать / скрыть дополнительные элементы управления или информацию,
+основываясь на том, в какой части документа находится пользователь.
+Например анимация при скроле или ленивая подгрузка
+- Подгрузить данные, когда пользователь прокручивает страницу вниз
+до конца. Бесконечный скрол.
+
+Интересным решением
+данных задач будет использование IntersectionObserver, который позволяет
+веб-приложениям асинхронно следить за изменением пересечения
+элемента с его родителем или областью видимости документа.
+
+*/
+
+//===================================================
+
+// События загрузки страницы
+/*
+1) DOMContentLoaded – браузер полностью загрузил HTML,
+	было построено DOM - дерево, но внешние ресурсы,
+	такие как картинки <img> и стили, могут быть ещё не загружены.
+2) load – браузер загрузил HTML и внешние ресурсы (картинки, стили и т.д.)
+3) beforeunload / unload – пользователь покидает страницу.
+*/
+
+/*
+document.readyState - состояние загрузки
+
+Есть три возможных значения:
+"loading" – документ загружается.
+"interactive" – документ был полностью прочитан.
+"complete" – документ был полностью прочитан
+и все ресурсы(такие как изображения) были тоже загружены.
+*/
+
+
+
+// Событие DOMContentLoaded срабатывает на объекте document
+document.addEventListener("DOMContentLoaded", readyDom);
+
+// Событие load срабатывает на объекте window
+window.addEventListener("load", readyLoad);
+
+function readyDom() {
+	const image = document.querySelector('.image');
+	console.log(document.readyState);
+	console.log('DOM загружен!');
+	console.log(image.offsetWidth);
+}
+function readyLoad() {
+	console.log(document.readyState);
+	const image = document.querySelector('.image');
+	console.log('Страница загружена!');
+	console.log(image.offsetWidth);
+}
+
+// readyDom();
+// readyLoad();
+
+// Событие beforeunload срабатывает на объекте window
+window.addEventListener("beforeunload", beforeUnLoad);
+
+function beforeUnLoad(event) {
+	// Отмените событие, как указано в стандарте.
+	event.preventDefault();
+	// Chrome требует установки возвратного значения.
+	event.returnValue = '';
+
+	// Откроется диалоговое окно и спросит
+}
+
+
+// Событие unload срабатывает на объекте window
+window.addEventListener("unload", function (e) {
+	// Отправка статистики в фоновом режиме и т.д.
+	// navigator.sendBeacon(url, data)
+	// https://w3c.github.io/beacon/.
+});
+
+
+//========================================================================================================================================================
+//========================================================================================================================================================
+//========================================================================================================================================================

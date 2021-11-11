@@ -2851,3 +2851,37 @@ window.addEventListener("unload", function (e) {
 //========================================================================================================================================================
 //========================================================================================================================================================
 //========================================================================================================================================================
+
+
+
+//  Делегирование событий  при добавдении новых кнопок
+
+const btns = document.querySelectorAll('.buttons');
+
+
+// -----------------
+
+
+const general = document.querySelector('.general');
+
+general.addEventListener ("click", function (e) {
+	let targetItem = e.target;
+	if (targetItem.closest('.general__btn')) {
+		targetItem.closest('.general__btn')
+		.classList.add('done');
+		targetItem.innerHTML = "Нажата";
+	}
+});
+
+// Добавление кнопки
+
+
+const  generalAdd = document.querySelector('.general__add');
+
+const  sectionButtonsBlock = document.querySelector('.general');
+
+generalAdd.addEventListener("click", function (e) {sectionButtonsBlock.insertAdjacentHTML(
+	'beforeend',
+	'<button type="button" class="general__btn">Нажми меня (новая)</button>'
+);
+});

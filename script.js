@@ -2885,3 +2885,114 @@ generalAdd.addEventListener("click", function (e) {sectionButtonsBlock.insertAdj
 	'<button type="button" class="general__btn">Нажми меня (новая)</button>'
 );
 });
+
+
+
+function ss(aaaa,bbbb) {
+  return aaaa - bbbb;
+ }
+
+console.log(ss(5,3))
+
+
+const user1 = {
+	name: "Nata",
+	age: 12,
+	address: {
+		city: {
+			title: "Minsk",
+			street: "Gintovta",
+		}
+	}
+}
+console.log(user1.address.city.street)
+// точечная нотация
+console.log(user1['address']['city']['street'])
+// квадратные скобки - ассоциативный массив
+
+ const city = {}
+ city.title = "Milan"
+ city['citizensCount'] = 200
+
+ console.log(city)
+
+ const users = ['d', 'f', 'k', 'n']
+ console.log(users[0])
+ console.log(users['map'] ((e) => e.toUpperCase()))
+ console.log(users.map((e) => e.toUpperCase()))
+ console.log(users)
+
+
+ const usersObj = {
+	'0': 'd',
+	'1': 'q',
+	'2': 'w',
+	'3': 't',
+ }
+ console.log(usersObj[0])
+ console.log(usersObj[3])
+
+ usersObj['0'] = "super"
+ usersObj['table'] = "red"
+
+ usersObj['привет, как дела'] = "хорошо"
+ console.log(usersObj)
+
+
+ const users1 = {
+	'0': 'd',
+	'1': 'q',
+	'2': 'w',
+	'3': 't',
+ }
+
+
+ console.log(users)
+ console.log(Object.keys(users1) )
+ console.log(Object.values(users1) )
+ console.log(Object.values(users1))
+
+ const usersA = {
+	'101':  {id: 101, name: 'D'},
+	'1021':  {id: 1021, name: 'K'},
+	'2101':  {id: 2101, name: 'N'},
+	'1':  {id: 1, name: 'M'},
+ }
+
+ const usersO = [
+	{id: 101, name: 'D'},
+	{id: 1021, name: 'K'},
+	{id: 2101, name: 'N'},
+	{id: 1, name: 'M'},
+
+ ]
+
+
+ let tt = {}
+ for (let i=0; i<1000;i++) {
+	tt[i] = 'yo'
+ }
+
+ console.log(tt[999])
+ console.log(tt)
+
+ console.log(usersA[1])
+ console.log(usersO.find(u=>u.id ===101))
+
+ const us = {id: 10500, name: 'K'}
+
+ console.log(usersA[us.id] = us);
+ console.log(usersA);
+
+ console.log(usersA[us.id].name='LL');
+ console.log(usersA);
+ console.log(delete usersA[us.id]);
+ console.log(usersA);
+
+
+ console.log(usersO.push(us));
+//  если можно: ИММУТАБЕЛЬНОСТЬ!!!
+ console.log(usersO);
+
+ const usersCopy = [...usersO.filter(u=>u.id !== user.id), us]
+ console.log(usersCopy);
